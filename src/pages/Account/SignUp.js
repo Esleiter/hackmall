@@ -3,28 +3,40 @@ import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { logoLight } from "../../assets/images";
 import { useNavigate } from "react-router-dom";
+import PreferenceForm from "./PreferentForm";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {
+  Box,
+  Typography,
+  Button,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
 
 const SignUp = () => {
   // ============= Initial State Start here =============
   const [clientName, setClientName] = useState("");
-  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [zip, setZip] = useState("");
   const [checked, setChecked] = useState(false);
-  // ============= Initial State End here ===============
+  const [open, setOpen] = React.useState(false);
+  const [color, setColor] = React.useState(true);
+  const [vestiment, setVestiment] = React.useState(false);
+  const [aliment, setAliment] = React.useState(false);
+  const [marca, setMarca] = React.useState(false);
+  const handleOpen = () => {
+    if (clientName != "" && phone != "") {
+      setOpen(true);
+      setChecked(true);
+    } else {
+      setErrClientName("Campo Vacio");
+      setErrPhone("Campo Vacio")
+    }
+  };
+  
   // ============= Error Msg Start here =================
   const [errClientName, setErrClientName] = useState("");
-  const [errEmail, setErrEmail] = useState("");
   const [errPhone, setErrPhone] = useState("");
-  const [errPassword, setErrPassword] = useState("");
-  const [errAddress, setErrAddress] = useState("");
-  const [errCity, setErrCity] = useState("");
-  const [errCountry, setErrCountry] = useState("");
-  const [errZip, setErrZip] = useState("");
   const navigate = useNavigate();
 
   // ============= Error Msg End here ===================
@@ -34,42 +46,13 @@ const SignUp = () => {
     setClientName(e.target.value);
     setErrClientName("");
   };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-    setErrEmail("");
-  };
+
   const handlePhone = (e) => {
     setPhone(e.target.value);
     setErrPhone("");
   };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-    setErrPassword("");
-  };
-  const handleAddress = (e) => {
-    setAddress(e.target.value);
-    setErrAddress("");
-  };
-  const handleCity = (e) => {
-    setCity(e.target.value);
-    setErrCity("");
-  };
-  const handleCountry = (e) => {
-    setCountry(e.target.value);
-    setErrCountry("");
-  };
-  const handleZip = (e) => {
-    setZip(e.target.value);
-    setErrZip("");
-  };
+
   // ============= Event Handler End here ===============
-  // ================= Email Validation start here =============
-  const EmailValidation = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
-  };
-  // ================= Email Validation End here ===============
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -77,62 +60,53 @@ const SignUp = () => {
       if (!clientName) {
         setErrClientName("Enter your name");
       }
-      if (!email) {
-        setErrEmail("Enter your email");
-      } else {
-        if (!EmailValidation(email)) {
-          setErrEmail("Enter a Valid email");
-        }
-      }
+
       if (!phone) {
         setErrPhone("Enter your phone number");
       }
-      if (!password) {
-        setErrPassword("Create a password");
-      } else {
-        if (password.length < 6) {
-          setErrPassword("Passwords must be at least 6 characters");
-        }
-      }
-      if (!address) {
-        setErrAddress("Enter your address");
-      }
-      if (!city) {
-        setErrCity("Enter your city name");
-      }
-      if (!country) {
-        setErrCountry("Enter the country you are residing");
-      }
-      if (!zip) {
-        setErrZip("Enter the zip code of your area");
-      }
+
       // ============== Getting the value ==============
-      if (
-        clientName &&
-        email &&
-        EmailValidation(email) &&
-        password &&
-        password.length >= 6 &&
-        address &&
-        city &&
-        country &&
-        zip
-      ) {
-        // setSuccessMsg(
-        //   `Hello dear ${clientName}, Welcome you to OREBI Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
-        // );
+      if (clientName) {
+        setMarca(false);
+        setOpen(false);
         navigate("/shop");
         setClientName("");
-        setEmail("");
         setPhone("");
-        setPassword("");
-        setAddress("");
-        setCity("");
-        setCountry("");
-        setZip("");
       }
     }
   };
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 600,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const PreferentCustom = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    marginTop: "2rem",
+  };
+
+  const buttonStyle = {
+    marginTop: "1rem",
+    marginBottom: "1rem",
+    backgroundColor: "#f44336",
+    color: "#fff",
+    fontSize: "1.2rem",
+    padding: ".5em 2rem",
+    borderRadius: "10px",
+    fontWeight: "bold",
+    cursor: "pointer",
+  };
+
   return (
     <div className="w-full h-screen flex items-center justify-start">
       <div className="w-1/2 hidden lgl:inline-flex h-full text-white">
@@ -201,7 +175,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="w-full lgl:w-[500px] h-full flex flex-col justify-center">
+      <div className="w-full lgl:w-[500px] h-full flex flex-col justify-center">      
         {successMsg ? (
           <div className="w-[500px]">
             <p className="w-full px-4 py-10 text-green-500 font-medium font-titleFont">
@@ -218,9 +192,9 @@ const SignUp = () => {
           </div>
         ) : (
           <form className="w-full lgl:w-[500px] h-screen flex items-center justify-center">
-            <div className="px-6 py-4 w-full h-[96%] flex flex-col justify-start overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
+            <div className="px-6 py-4 w-full h-[96%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
               <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4">
-                Create your account
+                Personalizacion de Preferencias
               </h1>
               <div className="flex flex-col gap-3">
                 {/* client name */}
@@ -233,31 +207,12 @@ const SignUp = () => {
                     value={clientName}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="eg. John Doe"
+                    placeholder="ej. John Doe"
                   />
                   {errClientName && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
                       {errClientName}
-                    </p>
-                  )}
-                </div>
-                {/* Email */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Work Email
-                  </p>
-                  <input
-                    onChange={handleEmail}
-                    value={email}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="email"
-                    placeholder="john@workemail.com"
-                  />
-                  {errEmail && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errEmail}
                     </p>
                   )}
                 </div>
@@ -271,7 +226,7 @@ const SignUp = () => {
                     value={phone}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="008801234567891"
+                    placeholder="0999999999"
                   />
                   {errPhone && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -280,103 +235,137 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
-                {/* Password */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Password
-                  </p>
-                  <input
-                    onChange={handlePassword}
-                    value={password}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="password"
-                    placeholder="Create password"
-                  />
-                  {errPassword && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errPassword}
-                    </p>
-                  )}
-                </div>
-                {/* Address */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Address
-                  </p>
-                  <input
-                    onChange={handleAddress}
-                    value={address}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                    placeholder="road-001, house-115, example area"
-                  />
-                  {errAddress && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errAddress}
-                    </p>
-                  )}
-                </div>
-                {/* City */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    City
-                  </p>
-                  <input
-                    onChange={handleCity}
-                    value={city}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                    placeholder="Your city"
-                  />
-                  {errCity && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errCity}
-                    </p>
-                  )}
-                </div>
-                {/* Country */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Country
-                  </p>
-                  <input
-                    onChange={handleCountry}
-                    value={country}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                    placeholder="Your country"
-                  />
-                  {errCountry && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errCountry}
-                    </p>
-                  )}
-                </div>
-                {/* Zip code */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Zip/Postal code
-                  </p>
-                  <input
-                    onChange={handleZip}
-                    value={zip}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                    placeholder="Your country"
-                  />
-                  {errZip && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errZip}
-                    </p>
-                  )}
-                </div>
+
+                <Box style={PreferentCustom}>
+                  <Typography
+                    fontSize={15}
+                    fontWeight={"bold"}
+                    color={"#f44336"}
+                  >
+                    Nos gustaria conocer un poco mas de ti
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    sx={buttonStyle}
+                    onClick={handleOpen}
+                  >
+                    Vamos
+                  </Button>
+                </Box>
+
+                {open && (
+                  <Box sx={style}>
+                    {color && (
+                      <Accordion expanded={color}>
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                        >
+                          <Typography>Colores</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography>
+                            <PreferenceForm />
+                            <Button
+                              variant="contained"
+                              sx={buttonStyle}
+                              onClick={() => (
+                                setColor(false), setVestiment(true)
+                              )}
+                            >
+                              Siguiente
+                            </Button>
+                          </Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                    )}
+
+                    {vestiment && (
+                      <Accordion expanded={vestiment}>
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                        >
+                          <Typography>Vestimenta</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography>
+                            <PreferenceForm />
+                            <Button
+                              variant="contained"
+                              sx={buttonStyle}
+                              onClick={() => (
+                                setVestiment(false), setAliment(true)
+                              )}
+                            >
+                              Siguiente
+                            </Button>
+                          </Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                    )}
+
+                    {aliment && (
+                      <Accordion expanded={aliment}>
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                        >
+                          <Typography>Alimentacion</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography>
+                            <PreferenceForm />
+                            <Button
+                              variant="contained"
+                              sx={buttonStyle}
+                              onClick={() => (
+                                setAliment(false), setMarca(true)
+                              )}
+                            >
+                              Siguiente
+                            </Button>
+                          </Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                    )}
+
+                    {marca && (
+                      <Accordion expanded={marca}>
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                        >
+                          <Typography>Marca</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography>
+                            <PreferenceForm />
+                            <Button
+                              variant="contained"
+                              sx={buttonStyle}
+                              onClick={handleSignUp}
+                              className={`${
+                                checked
+                                  ? "bg-primeColor hover:bg-black hover:text-white cursor-pointer"
+                                  : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none"
+                              } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
+                            >
+                              Listo
+                            </Button>
+                          </Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                    )}
+                  </Box>
+                )}
+
                 {/* Checkbox */}
-                <div className="flex items-start mdl:items-center gap-2">
+                {/* <div className="flex items-start mdl:items-center gap-2">
                   <input
                     onChange={() => setChecked(!checked)}
                     className="w-4 h-4 mt-1 mdl:mt-0 cursor-pointer"
@@ -387,8 +376,8 @@ const SignUp = () => {
                     <span className="text-blue-500">Terms of Service </span>and{" "}
                     <span className="text-blue-500">Privacy Policy</span>.
                   </p>
-                </div>
-                <button
+                </div> */}
+                {/* <button
                   onClick={handleSignUp}
                   className={`${
                     checked
@@ -397,15 +386,15 @@ const SignUp = () => {
                   } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
                 >
                   Create Account
-                </button>
-                <p className="text-sm text-center font-titleFont font-medium">
+                </button> */}
+                {/* <p className="text-sm text-center font-titleFont font-medium">
                   Don't have an Account?{" "}
                   <Link to="/signin">
                     <span className="hover:text-blue-600 duration-300">
                       Sign in
                     </span>
                   </Link>
-                </p>
+                </p> */}
               </div>
             </div>
           </form>
