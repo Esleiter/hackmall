@@ -63,7 +63,7 @@ const Shop = () => {
     <div className="flex flex items-center mx-2">
       <div className="w-32 h-32 border-4 border-orange-500 rounded-full overflow-hidden">
         <img
-          src={story.img || "https://www.scidev.net/america-latina/wp-content/uploads/sites/3/2020/11/eggs_by_pxhere-996x567.jpg"}
+          src={story?.img ?? story?.image}
           alt={story.productName}
           className="w-full h-full object-cover"
           onClick={() => handleClick(story.productName, story._id)}
