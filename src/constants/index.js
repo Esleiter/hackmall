@@ -428,3 +428,85 @@ export const paginationItems = [
   },
 ];
 // =================== PaginationItems End here =================
+
+export const profile_user = [
+  {
+    id_profile: "601",
+    role_user: "admin",
+    name_user: "Mauro Echeverria",
+    celular: "0960939030",
+    email: "maurovinicio.echeverria@gmail.com",
+    preferencias: {
+      color: [],
+      tipo_alimentacion: ["vegetariana","Basada en Proteinas"],
+      tipo_vestimenta:["Informal"],
+      marcas: ["Nike","Adidas","H&M","Fila","Lacoste","Boss"]
+    }
+  }
+];
+
+export const preferecnia_user = [
+  {
+    colores: ["Rojo","Verde","Azul","Amarillo","Cyan","Negro","Blanco"],
+    tipo_vestimenta:["Formal","Informal","Deportiva","De playa","De montaña","De invierno","De verano","Casual"],
+    tipo_alimentacion: ["Comida rapida","Vegetariana","Basada en Proteinas","Mediterránea","Ayuno intermitente","Dieta calorica","Golosinas","Proteinico","Carbohidrato","Lactosa","No Lactosa"],
+    marcas: ["Nike","Adidas","Reebok","Puma","Sumesa","Nestle","Unilever","P&G","Maggi","Tesco","Vans","H&M","Fila","Lacoste","Boss","Toni","Tru"]
+  }
+];
+
+export const purchases_made = [
+  {
+    id_transaction: 1000,
+    id_profile: 601,
+    products: [
+      {
+        product_id: 1012,
+        cantidad: 1
+      },
+      {
+        product_id: 1013,
+        cantidad: 1
+      },
+      {
+        product_id: 1014,
+        cantidad: 1
+      }
+    ]
+  },
+  {
+    id_transaction: 1001,
+    id_profile: 601,
+    products: [
+      {
+        product_id: 1015,
+        cantidad: 1
+      },
+      {
+        product_id: 1016,
+        cantidad: 1
+      },
+      {
+        product_id: 1017,
+        cantidad: 1
+      }
+    ]
+  },
+  {
+    id_transaction: 1002,
+    id_profile: 602,
+    products: [
+      {
+        product_id: 1012,
+        cantidad: 1
+      },
+      {
+        product_id: 1013,
+        cantidad: 1
+      },
+      {
+        product_id: 1014,
+        cantidad: 1
+      }
+    ]
+  },
+];
