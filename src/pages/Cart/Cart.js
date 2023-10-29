@@ -6,6 +6,7 @@ import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
 import { emptyCart } from "../../assets/images/index";
 import ItemCard from "./ItemCard";
+import uuid from "uuid";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -42,12 +43,13 @@ const Cart = () => {
           btnHorizontal: true,
           btnCard: true,
           createOrder: function(actions){
+            const uniqueTransactionId = uuid.v4();
             // Se ingresan los datos de la transaccion ej. monto, impuestos, etc
             return actions.prepare({
               amount: 100,
               amountWithoutTax: 100,
               currency: "USD",
-              clientTransactionId: "00007",
+              clientTransactionId: uniqueTransactionId,
               lang: "es"
             }).then(function(paramlog){
               console.log(paramlog);
