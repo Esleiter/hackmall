@@ -24,8 +24,15 @@ const Shop = () => {
     });
     setDescuento(newItem);
     const top = paginationItems.find((item) => item.descuento > 0);
-    setTopProduct([top]);
-    localStorage.setItem('topProduct', JSON.stringify([top]));
+    localStorage.setItem("topProduct", JSON.stringify([top]));
+
+    const topProductsFromLocalStorage = JSON.parse(
+      localStorage.getItem("topProduct")
+    );
+
+    if (topProductsFromLocalStorage) {
+      setTopProduct(topProductsFromLocalStorage);
+    }
   }, []);
 
   const handleClick = (e, id) => {
