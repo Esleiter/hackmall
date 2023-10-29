@@ -49,7 +49,7 @@ const Cart = () => {
               amount: ${total},
               amountWithoutTax: 100,
               currency: "USD",
-              clientTransactionId: "00000000009",
+              clientTransactionId: "00000000008",
               lang: "es"
             }).then(function(paramlog){
               console.log(paramlog);
