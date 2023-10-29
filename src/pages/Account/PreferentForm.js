@@ -1,37 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Card, CardContent, Grid, Chip } from "@mui/material";
 import DoneIcon from '@mui/icons-material/Done';
 
-const PreferenceForm = () => {
-  const [preferents, setPreferents] = useState([
-    {
-      name: "Cine",
-      id: 1,
-    },
-    {
-      name: "Deporte",
-      id: 2,
-    },
-    {
-      name: "Música",
-      id: 3,
-    },
-    {
-      name: "Tecnología",
-      id: 4,
-    },
-    {
-      name: "Videojuegos",
-      id: 5,
-    }
-  ]);
+const PreferenceForm = ({preferents}) => {
+  
+  const [option, setOption] = useState([]);
 
-  const handleClick = () => {};
+  useEffect(() => {
+    setOption(preferents);
+  }, []);
+
+  const handleClick = (optionId) => {
+    const newOptions = option.filter((preferent) => preferent.id != optionId);
+    setOption(newOptions);
+  }
   
   const handleDelete = () => {};
 
   const cardStyles = {
-    maxWidth: 600, // Ancho máximo de la tarjeta
+    maxWidth: 900, // Ancho máximo de la tarjeta
     minHeight: 200, // Altura mínima de la tarjeta
     marginTop: "2rem",
     display: "flex",
@@ -42,7 +29,10 @@ const PreferenceForm = () => {
 
   const chipStyles = {
     fontSize: '16px', // Tamaño de fuente
-    padding: '12px 18px', // Relleno interno
+    padding: '18px', // Relleno interno
+    backgroundColor: '#fff',
+    border: '1px solid #f44336',
+    color: '#f44336'
   };
 
   return (
@@ -50,12 +40,12 @@ const PreferenceForm = () => {
       <Card style={cardStyles}>
         <CardContent>
           <Grid container gap={4}>
-            {preferents &&
-              preferents.map((preferent) => (
+            {option &&
+              option.map((preferent) => (
                 <Chip
                   key={preferent.id}
                   label={preferent.name}
-                  onClick={handleClick}
+                  onClick={() => handleClick(preferent.id)}
                   onDelete={handleDelete}
                   deleteIcon={<DoneIcon />}
                   style={chipStyles}

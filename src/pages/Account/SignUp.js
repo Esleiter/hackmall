@@ -24,16 +24,109 @@ const SignUp = () => {
   const [vestiment, setVestiment] = React.useState(false);
   const [aliment, setAliment] = React.useState(false);
   const [marca, setMarca] = React.useState(false);
+
+  const [colors, setColors] = useState([
+    {
+      name: "Rojo",
+      id: 1,
+    },
+    {
+      name: "Amarillo",
+      id: 2,
+    },
+    {
+      name: "Azul",
+      id: 3,
+    },
+    {
+      name: "Verde",
+      id: 4,
+    },
+    {
+      name: "Naranja",
+      id: 5,
+    },
+  ]);
+
+  const [vestimentOption, setVestimentOption] = useState([
+    {
+      name: "Casual",
+      id: 1,
+    },
+    {
+      name: "Formal",
+      id: 2,
+    },
+    {
+      name: "Deportivo",
+      id: 3,
+    },
+    {
+      name: "Elegante",
+      id: 4,
+    },
+    {
+      name: "Casual",
+      id: 5,
+    },
+  ]);
+
+  const [alimentOption, setAlimentOption] = useState([
+    {
+      name: "Vegetariano",
+      id: 1,
+    },
+    {
+      name: "Vegano",
+      id: 2,
+    },
+    {
+      name: "Carnivoro",
+      id: 3,
+    },
+    {
+      name: "Omnivoro",
+      id: 4,
+    },
+    {
+      name: "Frugivoro",
+      id: 5,
+    },
+  ]);
+
+  const [marcaOption, setMarcaOption] = useState([
+    {
+      name: "Adidas",
+      id: 1,
+    },
+    {
+      name: "Nike",
+      id: 2,
+    },
+    {
+      name: "Puma",
+      id: 3,
+    },
+    {
+      name: "Reebok",
+      id: 4,
+    },
+    {
+      name: "Converse",
+      id: 5,
+    },
+  ]);
+
   const handleOpen = () => {
     if (clientName != "" && phone != "") {
       setOpen(true);
       setChecked(true);
     } else {
       setErrClientName("Campo Vacio");
-      setErrPhone("Campo Vacio")
+      setErrPhone("Campo Vacio");
     }
   };
-  
+
   // ============= Error Msg Start here =================
   const [errClientName, setErrClientName] = useState("");
   const [errPhone, setErrPhone] = useState("");
@@ -81,7 +174,7 @@ const SignUp = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 600,
+    width: 900,
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
@@ -105,6 +198,25 @@ const SignUp = () => {
     borderRadius: "10px",
     fontWeight: "bold",
     cursor: "pointer",
+  };
+
+  const buttonStyleSubmit = {
+    marginTop: "1rem",
+    marginBottom: "1rem",
+    backgroundColor: "#f44336",
+    color: "#fff",
+    fontSize: "1rem",
+    width: "120px",
+    borderRadius: "10px",
+    fontWeight: "bold",
+    cursor: "pointer",
+  };
+
+  const buttonStyleDown = {
+    width: "100%",
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "end",
   };
 
   return (
@@ -175,7 +287,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="w-full lgl:w-[500px] h-full flex flex-col justify-center">      
+      <div className="w-full lgl:w-[500px] h-full flex flex-col justify-center">
         {successMsg ? (
           <div className="w-[500px]">
             <p className="w-full px-4 py-10 text-green-500 font-medium font-titleFont">
@@ -193,21 +305,20 @@ const SignUp = () => {
         ) : (
           <form className="w-full lgl:w-[500px] h-screen flex items-center justify-center">
             <div className="px-6 py-4 w-full h-[96%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
-              <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4">
-                Personalizacion de Preferencias
+              <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4 text-red-500">
+                Personalización de Preferencias
               </h1>
               <div className="flex flex-col gap-3">
                 {/* client name */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Full Name
+                    Podrias describir uno de tus pasatiempos favoritos?
                   </p>
-                  <input
+                  <textarea
                     onChange={handleName}
                     value={clientName}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    className="w-full h-32 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="ej. John Doe"
                   />
                   {errClientName && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -219,14 +330,13 @@ const SignUp = () => {
                 {/* Phone Number */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Phone Number
+                    Cual es tu comida favorita?
                   </p>
-                  <input
+                  <textarea
                     onChange={handlePhone}
                     value={phone}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    className="w-full h-32 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="0999999999"
                   />
                   {errPhone && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -262,20 +372,28 @@ const SignUp = () => {
                           aria-controls="panel1a-content"
                           id="panel1a-header"
                         >
-                          <Typography>Colores</Typography>
+                          <Typography
+                            fontSize={25}
+                            fontWeight={"bold"}
+                            color={"#f44336"}
+                          >
+                            Colores
+                          </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                           <Typography>
-                            <PreferenceForm />
-                            <Button
-                              variant="contained"
-                              sx={buttonStyle}
-                              onClick={() => (
-                                setColor(false), setVestiment(true)
-                              )}
-                            >
-                              Siguiente
-                            </Button>
+                            <PreferenceForm preferents={colors} />
+                            <Box style={buttonStyleDown}>
+                              <Button
+                                variant="contained"
+                                sx={buttonStyleSubmit}
+                                onClick={() => (
+                                  setColor(false), setVestiment(true)
+                                )}
+                              >
+                                Siguiente
+                              </Button>
+                            </Box>
                           </Typography>
                         </AccordionDetails>
                       </Accordion>
@@ -288,20 +406,28 @@ const SignUp = () => {
                           aria-controls="panel1a-content"
                           id="panel1a-header"
                         >
-                          <Typography>Vestimenta</Typography>
+                          <Typography
+                            fontSize={25}
+                            fontWeight={"bold"}
+                            color={"#f44336"}
+                          >
+                            Vestimenta
+                          </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                           <Typography>
-                            <PreferenceForm />
-                            <Button
-                              variant="contained"
-                              sx={buttonStyle}
-                              onClick={() => (
-                                setVestiment(false), setAliment(true)
-                              )}
-                            >
-                              Siguiente
-                            </Button>
+                            <PreferenceForm preferents={vestimentOption} />
+                            <Box style={buttonStyleDown}>
+                              <Button
+                                variant="contained"
+                                sx={buttonStyleSubmit}
+                                onClick={() => (
+                                  setVestiment(false), setAliment(true)
+                                )}
+                              >
+                                Siguiente
+                              </Button>
+                            </Box>
                           </Typography>
                         </AccordionDetails>
                       </Accordion>
@@ -314,20 +440,28 @@ const SignUp = () => {
                           aria-controls="panel1a-content"
                           id="panel1a-header"
                         >
-                          <Typography>Alimentacion</Typography>
+                          <Typography
+                            fontSize={25}
+                            fontWeight={"bold"}
+                            color={"#f44336"}
+                          >
+                            Alimentacion
+                          </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                           <Typography>
-                            <PreferenceForm />
-                            <Button
-                              variant="contained"
-                              sx={buttonStyle}
-                              onClick={() => (
-                                setAliment(false), setMarca(true)
-                              )}
-                            >
-                              Siguiente
-                            </Button>
+                            <PreferenceForm preferents={alimentOption} />
+                            <Box sx={buttonStyleDown}>
+                              <Button
+                                variant="contained"
+                                sx={buttonStyleSubmit}
+                                onClick={() => (
+                                  setAliment(false), setMarca(true)
+                                )}
+                              >
+                                Siguiente
+                              </Button>
+                            </Box>
                           </Typography>
                         </AccordionDetails>
                       </Accordion>
@@ -340,61 +474,37 @@ const SignUp = () => {
                           aria-controls="panel1a-content"
                           id="panel1a-header"
                         >
-                          <Typography>Marca</Typography>
+                          <Typography
+                            fontSize={25}
+                            fontWeight={"bold"}
+                            color={"#f44336"}
+                          >
+                            Marca
+                          </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                           <Typography>
-                            <PreferenceForm />
-                            <Button
-                              variant="contained"
-                              sx={buttonStyle}
-                              onClick={handleSignUp}
-                              className={`${
-                                checked
-                                  ? "bg-primeColor hover:bg-black hover:text-white cursor-pointer"
-                                  : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none"
-                              } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
-                            >
-                              Listo
-                            </Button>
+                            <PreferenceForm preferents={marcaOption} />
+                            <Box style={buttonStyleDown}>
+                              <Button
+                                variant="contained"
+                                sx={buttonStyle}
+                                onClick={handleSignUp}
+                                className={`${
+                                  checked
+                                    ? "bg-primeColor hover:bg-black hover:text-white cursor-pointer"
+                                    : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none"
+                                } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
+                              >
+                                Listo
+                              </Button>
+                            </Box>
                           </Typography>
                         </AccordionDetails>
                       </Accordion>
                     )}
                   </Box>
                 )}
-
-                {/* Checkbox */}
-                {/* <div className="flex items-start mdl:items-center gap-2">
-                  <input
-                    onChange={() => setChecked(!checked)}
-                    className="w-4 h-4 mt-1 mdl:mt-0 cursor-pointer"
-                    type="checkbox"
-                  />
-                  <p className="text-sm text-primeColor">
-                    I agree to the OREBI{" "}
-                    <span className="text-blue-500">Terms of Service </span>and{" "}
-                    <span className="text-blue-500">Privacy Policy</span>.
-                  </p>
-                </div> */}
-                {/* <button
-                  onClick={handleSignUp}
-                  className={`${
-                    checked
-                      ? "bg-primeColor hover:bg-black hover:text-white cursor-pointer"
-                      : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none"
-                  } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
-                >
-                  Create Account
-                </button> */}
-                {/* <p className="text-sm text-center font-titleFont font-medium">
-                  Don't have an Account?{" "}
-                  <Link to="/signin">
-                    <span className="hover:text-blue-600 duration-300">
-                      Sign in
-                    </span>
-                  </Link>
-                </p> */}
               </div>
             </div>
           </form>
