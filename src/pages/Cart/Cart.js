@@ -6,35 +6,32 @@ import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
 import { emptyCart } from "../../assets/images/index";
 import ItemCard from "./ItemCard";
-import axios from "axios";
 
 const handleProceedToCheckout = () => {
   const parametros = {
     amount: "100",
     amountWithoutTax: "100",
-    clientTransactionID: "IdentificadorUnico",
+    clientTransactionID: "0000001",
     responseUrl: "https://hackathon.lat/checkout",
     cancellationUrl: "https://hackathon.lat/checkout",
   };
 
   // Configura los encabezados, incluyendo el token de autorización
-  const config = {
-    headers: {
-      Authorization:
-        "nVW5WIJ5C2A6S13HNKrK-kfaF7pDdOa-5zxLJUves7NDGShCW92gtUVKspmESY_qwpWvE_8rU4bzGyipTw8brS5TBhNAVdalJSfBN8D6cljBGQt2qDAnTRkZ7ejQHlkHQ2LgpH95IMLbg6eaNz6w_IB97_euHyIpG5wO3yek395pkSPZ8pK5-3WnBRC2Jtcslkhy3Zg3y5za3cnDVi20cpieoIOZnZOPFTrbk1t2fY7Lm1BG5i1YGoOxrCuR3BPX8X2Fai6qrVmdO45yGgiT_zGf14SOnXLu2Z9Z2W3OIuwD_y_6Tuslfx2-j5TAQMz9gPJ2EQ",
-    },
-  };
+  const headers = new Headers({
+    Authorization:
+      "nVW5WIJ5C2A6S13HNKrK-kfaF7pDdOa-5zxLJUves7NDGShCW92gtUVKspmESY_qwpWvE_8rU4bzGyipTw8brS5TBhNAVdalJSfBN8D6cljBGQt2qDAnTRkZ7ejQHlkHQ2LgpH95IMLbg6eaNz6w_IB97_euHyIpG5wO3yek395pkSPZ8pK5-3WnBRC2Jtcslkhy3Zg3y5za3cnDVi20cpieoIOZnZOPFTrbk1t2fY7Lm1BG5i1YGoOxrCuR3BPX8X2Fai6qrVmdO45yGgiT_zGf14SOnXLu2Z9Z2W3OIuwD_y_6Tuslfx2-j5TAQMz9gPJ2EQ",
+  });
 
-  // Realiza la solicitud POST utilizando Axios
-  axios
-    .post(
-      "https://pay.payphonetodoesposible.com/api/button/Prepare",
-      parametros,
-      config
-    )
-    .then((response) => {
+  // Realiza la solicitud POST utilizando fetch
+  fetch("https://pay.payphonetodoesposible.com/api/button/Prepare", {
+    method: "POST",
+    headers,
+    body: JSON.stringify(parametros),
+  })
+    .then((response) => response.json())
+    .then((data) => {
       // Redirige al usuario a la página de pago
-      window.location.href = response.data.payWithCard;
+      window.location.href = data.payWithCard;
     })
     .catch((error) => {
       // Maneja errores de la solicitud
