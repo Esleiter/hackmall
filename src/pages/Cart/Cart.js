@@ -71,6 +71,17 @@ const Cart = () => {
         }).render("#pp-button");
       }
       loadPay();
+      var contenedor = document.querySelector('.pp-button');
+  var elementos = contenedor.querySelectorAll('.payphone');
+
+  // Ocultar todos los divs hijos
+  for (var i = 0; i < elementos.length; i++) {
+    elementos[i].style.display = 'none';
+  }
+
+  // Mostrar solo el último div hijo
+  var ultimoElemento = elementos[elementos.length - 1];
+  ultimoElemento.style.display = 'block';
     `;
     document.head.appendChild(script);
   }, [totalAmt]);
