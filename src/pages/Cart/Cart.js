@@ -86,7 +86,6 @@ const Cart = () => {
     document.head.appendChild(script);
   }, [totalAmt]);
 
-
   const handleClick = () => {
     // Recuperar los productos existentes del localStorage
     const existingProducts = JSON.parse(localStorage.getItem("topProduct")) || [];

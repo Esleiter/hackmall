@@ -4,16 +4,17 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
 import { useDispatch, useSelector } from "react-redux";
+import { resetCart } from "../../redux/orebiSlice";
 
 const Payment = () => {
-
   const dispatch = useDispatch();
+  window.onload = () => dispatch(resetCart());
   const products = useSelector((state) => state.orebiReducer.products);
 
   useEffect(() => {
     // Datos a enviar en la solicitud POST
     const postData = {
-      token: "kl0oknftzozoknua",
+      token: "s93zfru1yl2mgl4p",
       to: "+584144582250",
       body: `¡Hola! 😃
 
@@ -36,7 +37,7 @@ const Payment = () => {
     // Configuración de la solicitud
     const config = {
       method: "post",
-      url: "https://api.ultramsg.com/instance12739/messages/chat",
+      url: "https://api.ultramsg.com/instance66870/messages/chat",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },

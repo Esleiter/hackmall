@@ -8,11 +8,20 @@ const ProductsGpt = ({ arrayPrompt = [] }) => {
   const [currentItems, setCurrentItems] = useState([]);
 
   useEffect(() => {
-    setCurrentItems(items?.filter((item) => arrayPrompt.includes(item.productName)))
-  }, [arrayPrompt])
-  
+    const itemsSearch = items?.filter((item) =>
+      arrayPrompt?.includes(item.productName)
+    );
+    const keywords = items?.filter((item) =>
+      item?.keywords?.some((v) => arrayPrompt?.includes(v))
+    );
+    console.log(itemsSearch, keywords);
+    const filterSameKeyword = keywords?.filter(
+      (item) => !itemsSearch?.some((v) => v._id === item._id)
+    );
+    setCurrentItems([...itemsSearch, ...filterSameKeyword]);
+  }, [arrayPrompt]);
 
-  console.log('arrrr', arrayPrompt)
+  console.log("arrrr", arrayPrompt);
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Products" />
@@ -24,20 +33,22 @@ const ProductsGpt = ({ arrayPrompt = [] }) => {
         <div className="w-full mdl:w-[80%] lgl:w-[75%] h-full flex flex-col gap-10">
           {/* <ProductBanner itemsPerPageFromBanner={itemsPerPageFromBanner} /> */}
           {/* <Pagination itemsPerPage={itemsPerPage} /> */}
-          {currentItems &&
-            currentItems.map((item) => (
-              <div key={item._id} className="w-full">
-                <Product
-                  _id={item._id}
-                  img={item.img}
-                  productName={item.productName}
-                  price={item.price}
-                  color={item.color}
-                  badge={item.badge}
-                  des={item.des}
-                />
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 mdl:gap-4 lg:gap-10">
+            {currentItems &&
+              currentItems.map((item) => (
+                <div key={item._id} className="w-full">
+                  <Product
+                    _id={item._id}
+                    img={item.img}
+                    productName={item.productName}
+                    price={item.price}
+                    color={item.color}
+                    badge={item.badge}
+                    des={item.des}
+                  />
+                </div>
+              ))}
+          </div>
         </div>
       </div>
       {/* ================= Products End here ===================== */}

@@ -79,7 +79,7 @@ export const SplOfferData = [
     price: "35.00",
     color: "Blank and White",
     badge: true,
-    des: "",
+    des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.",
   },
   {
     _id: "202",
@@ -126,6 +126,7 @@ export const paginationItems = [
     tipo_alimentacion: "Lactosa",
     marca: "Toni",
     tienda: "Megamaxi",
+    keywords: ['Leche', "Laptosa"]
   },
   {
     _id: 1002,
@@ -139,6 +140,7 @@ export const paginationItems = [
     tipo_alimentacion: "Carbohidrato",
     marca: "Maggi",
     tienda: "Megamaxi",
+    keywords: ["Pan", "Panceta"]
   },
   {
     _id: 1003,
@@ -152,6 +154,7 @@ export const paginationItems = [
     tipo_alimentacion: "Proteinico",
     marca: "Sumesa",
     tienda: "Megamaxi",
+    keywords: ["Huevos", "Huevos Medianos"]
   },
   {
     _id: 1005,
@@ -165,6 +168,7 @@ export const paginationItems = [
     tipo_alimentacion: "Carbohidrado",
     marca: "Tru",
     tienda: "Megamaxi",
+    keywords: ["Harina", "Harina de trigo"]
   },
   {
     _id: 1006,
@@ -178,6 +182,7 @@ export const paginationItems = [
     tipo_alimentacion: "Especias",
     marca: "Tru",
     tienda: "Megamaxi",
+    keywords: ["Azucar", "Azúcar"]
   },
   {
     _id: 1007,
@@ -191,6 +196,7 @@ export const paginationItems = [
     tipo_alimentacion: "Especias",
     marca: "Tru",
     tienda: "Megamaxi",
+    keywords: ["Aceite", "Aceite Vegetal"]
   },
   {
     _id: 1008,
@@ -204,6 +210,7 @@ export const paginationItems = [
     tipo_alimentacion: "Especias",
     marca: "Tru",
     tienda: "Megamaxi",
+    keywords: ["Polvo para hornear"]
   },
   {
     _id: 1009,
@@ -217,6 +224,7 @@ export const paginationItems = [
     tipo_alimentacion: "Especias",
     marca: "Tru",
     tienda: "Megamaxi",
+    keywords: ["Bicarbonato"]
   },
   {
     _id: 1010,
@@ -321,6 +329,7 @@ export const paginationItems = [
     tipo_alimentacion: "Deportiva",
     marca: "Adidas",
     tienda: "Marathon",
+    keywords: ["Camiseta manga corta", "Camiseta", "Camiseta Ecuador", "Camiseta deportiva"]
   },
   {
     _id: 1018,
@@ -334,6 +343,7 @@ export const paginationItems = [
     tipo_alimentacion: "Deportiva",
     marca: "Nike",
     tienda: "Marathon",
+    keywords: ["Zapatos", "Montana"]
   },
   {
     _id: 1019,
@@ -347,6 +357,7 @@ export const paginationItems = [
     tipo_alimentacion: "Deportiva",
     marca: "Puma",
     tienda: "Marathon",
+    keywords: ["Banador", "Traje de bano"]
   },
   {
     _id: 1020,
@@ -360,6 +371,7 @@ export const paginationItems = [
     tipo_alimentacion: "Deportiva",
     marca: "Adidas",
     tienda: "Marathon",
+    keywords: ["Buzo", "Termico"]
   },
   {
     _id: 1021,
@@ -399,6 +411,7 @@ export const paginationItems = [
     tipo_alimentacion: "Comida rapida",
     marca: "KFC",
     tienda: "KFC",
+    keywords: ["Comida"]
   },
   {
     _id: 1024,
@@ -425,6 +438,7 @@ export const paginationItems = [
     tipo_alimentacion: "Comida rapida",
     marca: "KFC",
     tienda: "KFC",
+    keywords: ["Comida"]
   },
 ];
 // =================== PaginationItems End here =================
