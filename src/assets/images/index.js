@@ -25,7 +25,7 @@ import spfTwo from "./products/specialOffer/spfTwo.webp";
 import spfThree from "./products/specialOffer/spfThree.webp";
 import spfFour from "./products/specialOffer/spfFour.webp";
 
-import huevos from "./products/specialOffer/spfFour.webp";
+import huevos from "./products/specialOffer/huevos.webp";
 import aceite from "./products/specialOffer/aceite.jpeg";
 import azucar from "./products/specialOffer/azucar.jpeg";
 import harina from "./products/specialOffer/harina.jpeg";
@@ -41,6 +41,16 @@ import impalpable from "./products/specialOffer/impalpable.jpeg";
 import vainilla from "./products/specialOffer/vainilla.jpeg";
 import hornear from "./products/specialOffer/hornear.jpeg";
 import sal from "./products/specialOffer/sal.jpeg";
+
+import bano from "./products/specialOffer/bano.jpeg";
+import combo1 from "./products/specialOffer/combo1.jpeg";
+import combobox from "./products/specialOffer/combobox.jpeg";
+import ecuador from "./products/specialOffer/ecuador.jpeg";
+import fritas from "./products/specialOffer/fritas.jpeg";
+import montana from "./products/specialOffer/montana.jpeg";
+import termico from "./products/specialOffer/termico.jpeg";
+import twister from "./products/specialOffer/twister.jpeg";
+import licra from "./products/specialOffer/licra.jpeg";
 
 // Year Product
 import productOfTheYear from "./products/productOfTheYear.webp";
@@ -92,6 +102,16 @@ export {
   vainilla,
   hornear,
   sal,
+
+  bano,
+  combo1,
+  combobox,
+  ecuador,
+  fritas,
+  montana,
+  termico,
+  twister,
+  licra,
 
   // Year Product
   productOfTheYear,
