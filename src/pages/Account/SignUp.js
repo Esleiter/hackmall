@@ -315,10 +315,8 @@ const SignUp = () => {
             <img src={logoLight} alt="logoImg" className="w-28" />
           </Link>
           <div className="flex flex-col gap-1 -mt-1">
-            <h1 className="font-titleFont text-xl font-medium">
-              Get started for free
-            </h1>
-            <p className="text-base">Create your account to access more</p>
+            <h1 className="font-titleFont text-xl font-medium">Bienvenido!</h1>
+            <p className="text-base">La experiencia del mall reiventada</p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
             <span className="text-green-500 mt-1">
@@ -326,7 +324,7 @@ const SignUp = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Get started fast with OREBI
+                Una experiencia diseñada para ti
               </span>
               <br />
             </p>
@@ -337,11 +335,10 @@ const SignUp = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Access all OREBI services
+                Fast Shop, Habla con nuestro Amigo en nuestra reinvencion de la
+                interfaz comun
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
             </p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
@@ -350,25 +347,25 @@ const SignUp = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Trusted by online Shoppers
+                La nueva forma de comprar
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
             </p>
           </div>
           <div className="flex items-center justify-between mt-10">
+            <Link to="/">
+              <p className="text-sm font-titleFont font-semibold text-gray-300 hover:text-white cursor-pointer duration-300">
+                © HACKMALL
+              </p>
+            </Link>
             <p className="text-sm font-titleFont font-semibold text-gray-300 hover:text-white cursor-pointer duration-300">
-              © OREBI
+              Terminos
             </p>
             <p className="text-sm font-titleFont font-semibold text-gray-300 hover:text-white cursor-pointer duration-300">
-              Terms
+              Privacidad
             </p>
             <p className="text-sm font-titleFont font-semibold text-gray-300 hover:text-white cursor-pointer duration-300">
-              Privacy
-            </p>
-            <p className="text-sm font-titleFont font-semibold text-gray-300 hover:text-white cursor-pointer duration-300">
-              Security
+              Seguridad
             </p>
           </div>
         </div>
@@ -382,8 +379,7 @@ const SignUp = () => {
             <Link to="/signin">
               <button
                 className="w-full h-10 bg-primeColor rounded-md text-gray-200 text-base font-titleFont font-semibold 
-            tracking-wide hover:bg-black hover:text-white duration-300"
-              >
+            tracking-wide hover:bg-black hover:text-white duration-300">
                 Sign in
               </button>
             </Link>
@@ -400,17 +396,15 @@ const SignUp = () => {
                     <Button
                       variant="contained"
                       sx={buttonStyle}
-                      onClick={handleNotCheck}
-                    >
-                      Despues
+                      onClick={handleNotCheck}>
+                      Más tarde
                     </Button>
 
                     <Button
                       variant="contained"
                       sx={buttonStyle}
-                      onClick={handleOpen}
-                    >
-                      Vamos
+                      onClick={handleOpen}>
+                      De una!
                     </Button>
                   </div>
                 </Box>
@@ -422,13 +416,11 @@ const SignUp = () => {
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel1a-content"
-                          id="panel1a-header"
-                        >
+                          id="panel1a-header">
                           <Typography
                             fontSize={25}
                             fontWeight={"bold"}
-                            color={"#f44336"}
-                          >
+                            color={"#f44336"}>
                             Colores
                           </Typography>
                         </AccordionSummary>
@@ -441,8 +433,7 @@ const SignUp = () => {
                                 sx={buttonStyleSubmit}
                                 onClick={() => (
                                   setColor(false), setVestiment(true)
-                                )}
-                              >
+                                )}>
                                 Siguiente
                               </Button>
                             </Box>
@@ -456,13 +447,11 @@ const SignUp = () => {
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel1a-content"
-                          id="panel1a-header"
-                        >
+                          id="panel1a-header">
                           <Typography
                             fontSize={25}
                             fontWeight={"bold"}
-                            color={"#f44336"}
-                          >
+                            color={"#f44336"}>
                             Vestimenta
                           </Typography>
                         </AccordionSummary>
@@ -475,8 +464,7 @@ const SignUp = () => {
                                 sx={buttonStyleSubmit}
                                 onClick={() => (
                                   setVestiment(false), setAliment(true)
-                                )}
-                              >
+                                )}>
                                 Siguiente
                               </Button>
                             </Box>
@@ -490,13 +478,11 @@ const SignUp = () => {
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel1a-content"
-                          id="panel1a-header"
-                        >
+                          id="panel1a-header">
                           <Typography
                             fontSize={25}
                             fontWeight={"bold"}
-                            color={"#f44336"}
-                          >
+                            color={"#f44336"}>
                             Alimentacion
                           </Typography>
                         </AccordionSummary>
@@ -509,8 +495,7 @@ const SignUp = () => {
                                 sx={buttonStyleSubmit}
                                 onClick={() => (
                                   setAliment(false), setMarca(true)
-                                )}
-                              >
+                                )}>
                                 Siguiente
                               </Button>
                             </Box>
@@ -524,13 +509,11 @@ const SignUp = () => {
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel1a-content"
-                          id="panel1a-header"
-                        >
+                          id="panel1a-header">
                           <Typography
                             fontSize={25}
                             fontWeight={"bold"}
-                            color={"#f44336"}
-                          >
+                            color={"#f44336"}>
                             Marca
                           </Typography>
                         </AccordionSummary>
@@ -546,8 +529,7 @@ const SignUp = () => {
                                   checked
                                     ? "bg-primeColor hover:bg-black hover:text-white cursor-pointer"
                                     : "bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none"
-                                } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
-                              >
+                                } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}>
                                 Listo
                               </Button>
                             </Box>

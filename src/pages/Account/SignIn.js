@@ -45,7 +45,6 @@ const SignIn = () => {
       navigate("/signup");
       setEmail("");
       setPassword("");
-      
     }
   };
   return (
@@ -56,9 +55,7 @@ const SignIn = () => {
             <img src={logoLight} alt="logoImg" className="w-28" />
           </Link>
           <div className="flex flex-col gap-1 -mt-1">
-            <h1 className="font-titleFont text-xl font-medium">
-              Bienvenido!
-            </h1>
+            <h1 className="font-titleFont text-xl font-medium">Bienvenido!</h1>
             <p className="text-base">La experiencia del mall reiventada</p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
@@ -70,7 +67,6 @@ const SignIn = () => {
                 Una experiencia diseñada para ti
               </span>
               <br />
-              
             </p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
@@ -79,10 +75,10 @@ const SignIn = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Fast Shop, Habla con nuestro Amigo en nuestra reinvencion de la interfaz comun
+                Fast Shop, Habla con nuestro Amigo en nuestra reinvencion de la
+                interfaz comun
               </span>
               <br />
-              
             </p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
@@ -94,7 +90,6 @@ const SignIn = () => {
                 La nueva forma de comprar
               </span>
               <br />
-              
             </p>
           </div>
           <div className="flex items-center justify-between mt-10">
@@ -124,8 +119,7 @@ const SignIn = () => {
             <Link to="/signup">
               <button
                 className="w-full h-10 bg-primeColor text-gray-200 rounded-md text-base font-titleFont font-semibold 
-            tracking-wide hover:bg-black hover:text-white duration-300"
-              >
+            tracking-wide hover:bg-black hover:text-white duration-300">
                 Registrate
               </button>
             </Link>
@@ -147,7 +141,7 @@ const SignIn = () => {
                     value={email}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="email"
-                    placeholder="john@workemail.com"
+                    placeholder="malldelfuturo@hackmall.com"
                   />
                   {errEmail && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -178,8 +172,7 @@ const SignIn = () => {
 
                 <button
                   onClick={handleSignUp}
-                  className="bg-red-500 hover:bg-fe7a5d text-gray-200 hover:text-white cursor-pointer w-full text-base font-medium h-10 rounded-md duration-300"
-                >
+                  className="bg-red-500 hover:bg-fe7a5d text-gray-200 hover:text-white cursor-pointer w-full text-base font-medium h-10 rounded-md duration-300">
                   Inicia sesion
                 </button>
                 <p className="text-sm text-center font-titleFont font-medium">
