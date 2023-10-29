@@ -6,7 +6,6 @@ import qs from "qs";
 import { useDispatch, useSelector } from "react-redux";
 
 const Payment = () => {
-
   const dispatch = useDispatch();
   const products = useSelector((state) => state.orebiReducer.products);
 
@@ -48,7 +47,8 @@ const Payment = () => {
       .then(function (response) {
         console.log(JSON.stringify(response.data));
         // Recuperar los productos existentes del localStorage
-        const existingProducts = JSON.parse(localStorage.getItem("topProduct")) || [];
+        const existingProducts =
+          JSON.parse(localStorage.getItem("topProduct")) || [];
 
         // Combinar los productos recuperados con los productos de "products"
         const updatedProducts = [...existingProducts, ...products];
@@ -71,7 +71,9 @@ const Payment = () => {
           Siga disfrutando de la experiencia de comprar con el mall del futuro.
         </p>
         <Link to="/">
-          <button className="w-52 h-10 bg-primeColor text-white text-lg mt-4 hover:bg-black duration-300">
+          <button
+            onLoad={() => dispatch(resetCart())}
+            className="w-52 h-10 bg-primeColor text-white text-lg mt-4 hover:bg-black duration-300">
             Explorar más
           </button>
         </Link>
