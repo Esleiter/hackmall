@@ -34,6 +34,7 @@ const Cart = () => {
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
     let total = (totalAmt + shippingCharge) * 100;
+    console.log(total);
     script.text = `
       window.onload = function() {
         payphone.Button({
