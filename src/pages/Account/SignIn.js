@@ -57,9 +57,9 @@ const SignIn = () => {
           </Link>
           <div className="flex flex-col gap-1 -mt-1">
             <h1 className="font-titleFont text-xl font-medium">
-              Stay sign in for more
+              Bienvenido!
             </h1>
-            <p className="text-base">When you sign in, you are with us!</p>
+            <p className="text-base">La experiencia del mall reiventada</p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
             <span className="text-green-500 mt-1">
@@ -67,11 +67,10 @@ const SignIn = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Get started fast with OREBI
+                Una experiencia diseñada para ti
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
+              
             </p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
@@ -80,11 +79,10 @@ const SignIn = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Access all OREBI services
+                Fast Shop, Habla con nuestro Amigo en nuestra reinvencion de la interfaz comun
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
+              
             </p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
@@ -93,11 +91,10 @@ const SignIn = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Trusted by online Shoppers
+                La nueva forma de comprar
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
+              
             </p>
           </div>
           <div className="flex items-center justify-between mt-10">
@@ -129,7 +126,7 @@ const SignIn = () => {
                 className="w-full h-10 bg-primeColor text-gray-200 rounded-md text-base font-titleFont font-semibold 
             tracking-wide hover:bg-black hover:text-white duration-300"
               >
-                Sign Up
+                Registrate
               </button>
             </Link>
           </div>
@@ -137,13 +134,13 @@ const SignIn = () => {
           <form className="w-full lgl:w-[450px] h-screen flex items-center justify-center">
             <div className="px-6 py-4 w-full h-[90%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
               <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-3xl mdl:text-4xl mb-4">
-                Sign in
+                Inicia Sesion
               </h1>
               <div className="flex flex-col gap-3">
                 {/* Email */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Work Email
+                    Email
                   </p>
                   <input
                     onChange={handleEmail}
@@ -163,7 +160,7 @@ const SignIn = () => {
                 {/* Password */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Password
+                    Contraseña
                   </p>
                   <input
                     onChange={handlePassword}
@@ -184,13 +181,13 @@ const SignIn = () => {
                   onClick={handleSignUp}
                   className="bg-primeColor hover:bg-black text-gray-200 hover:text-white cursor-pointer w-full text-base font-medium h-10 rounded-md  duration-300"
                 >
-                  Sign In
+                  Inicia sesion
                 </button>
                 <p className="text-sm text-center font-titleFont font-medium">
-                  Don't have an Account?{" "}
+                  No tienes una cuenta,{" "}
                   <Link to="/signup">
                     <span className="hover:text-blue-600 duration-300">
-                      Sign up
+                      Registrate
                     </span>
                   </Link>
                 </p>

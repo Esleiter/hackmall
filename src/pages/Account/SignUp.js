@@ -129,8 +129,6 @@ const SignUp = () => {
                 Get started fast with OREBI
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
             </p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
