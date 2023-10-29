@@ -47,15 +47,6 @@ const Payment = () => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        // Recuperar los productos existentes del localStorage
-        const existingProducts = JSON.parse(localStorage.getItem("topProduct")) || [];
-
-        // Combinar los productos recuperados con los productos de "products"
-        const updatedProducts = [...existingProducts, ...products];
-
-        // Almacenar el nuevo conjunto de productos en el localStorage
-        localStorage.setItem("topProduct", JSON.stringify(updatedProducts));
-        // Puedes agregar lógica adicional aquí para manejar la respuesta
       })
       .catch(function (error) {
         console.log(error);

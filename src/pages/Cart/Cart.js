@@ -87,6 +87,20 @@ const Cart = () => {
   }, [totalAmt]);
 
 
+  const handleClick = () => {
+    // Recuperar los productos existentes del localStorage
+    const existingProducts = JSON.parse(localStorage.getItem("topProduct")) || [];
+
+    // Combinar los productos recuperados con los productos de "products"
+    const updatedProducts = [...existingProducts, ...products];
+
+    console.log(updatedProducts);
+
+    // Almacenar el nuevo conjunto de productos en el localStorage
+    localStorage.setItem("topProduct", JSON.stringify(updatedProducts));
+    // Puedes agregar lógica adicional aquí para manejar la respuesta
+  }
+
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
@@ -149,7 +163,7 @@ const Cart = () => {
                 </p>
               </div>
               <div className="flex justify-end">
-                <div id="pp-button"></div>
+                <div id="pp-button" onClick={() => handleClick()}></div>
               </div>
             </div>
           </div>

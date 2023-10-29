@@ -25,7 +25,7 @@ import spfTwo from "./products/specialOffer/spfTwo.webp";
 import spfThree from "./products/specialOffer/spfThree.webp";
 import spfFour from "./products/specialOffer/spfFour.webp";
 
-import huevos from "./products/specialOffer/huevos.webp";
+import huevos from "./products/specialOffer/huevos.jpg";
 import aceite from "./products/specialOffer/aceite.jpeg";
 import azucar from "./products/specialOffer/azucar.jpeg";
 import harina from "./products/specialOffer/harina.jpeg";

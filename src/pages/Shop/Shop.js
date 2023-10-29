@@ -23,14 +23,21 @@ const Shop = () => {
       }
     });
     setDescuento(newItem);
-    const top = paginationItems.find((item) => item.descuento > 0);
-    localStorage.setItem("topProduct", JSON.stringify([top]));
 
     const topProductsFromLocalStorage = JSON.parse(
       localStorage.getItem("topProduct")
     );
 
     if (topProductsFromLocalStorage) {
+      setTopProduct(topProductsFromLocalStorage);
+    } else {
+      const top = paginationItems.find((item) => item.descuento > 0);
+      localStorage.setItem("topProduct", JSON.stringify([top]));
+
+      const topProductsFromLocalStorage = JSON.parse(
+        localStorage.getItem("topProduct")
+      );
+
       setTopProduct(topProductsFromLocalStorage);
     }
   }, []);
@@ -52,14 +59,14 @@ const Shop = () => {
     });
   };
 
-  const StoryCard = ({ _id, img, productName }) => (
+  const StoryCard = ({ story }) => (
     <div className="flex flex items-center mx-2">
       <div className="w-32 h-32 border-4 border-orange-500 rounded-full overflow-hidden">
         <img
-          src={img}
-          alt={productName}
+          src={story.img || "https://www.scidev.net/america-latina/wp-content/uploads/sites/3/2020/11/eggs_by_pxhere-996x567.jpg"}
+          alt={story.productName}
           className="w-full h-full object-cover"
-          onClick={() => handleClick(productName, _id)}
+          onClick={() => handleClick(story.productName, story._id)}
         />
       </div>
     </div>
@@ -84,7 +91,7 @@ const Shop = () => {
           <div className="w-full flex">
             {descuento.map((story, index) => {
               if (index < 7) {
-                return <StoryCard key={index} {...story} />;
+                return <StoryCard key={index} story={story} />;
               }
             })}
           </div>
@@ -97,7 +104,7 @@ const Shop = () => {
 
           <div className="w-full flex">
             {topProduct.map((story, index) => {
-              return <StoryCard key={index} {...story} />;
+              return <StoryCard key={index} story={story} />;
             })}
           </div>
 
