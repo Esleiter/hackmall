@@ -440,6 +440,20 @@ export const paginationItems = [
     tienda: "KFC",
     keywords: ["Comida"]
   },
+  {
+    _id: 1070,
+    img: zanahoria,
+    productName: "Zanahoria",
+    price: "1.00",
+    color: "",
+    badge: true,
+    des: "Articulo tipo Vegetal",
+    descuento: 15,
+    tipo_alimentacion: "Vegetal",
+    marca: "Toni",
+    tienda: "Megamaxi",
+    keywords: ['Zanahoria', "Zanahoria rallada"]
+  }
 ];
 // =================== PaginationItems End here =================
 
