@@ -34,6 +34,7 @@ const Cart = () => {
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
     script.text = `
+    console.log(${totalAmt})
       window.onload = function() {
         function generateUniqueID() {
           const timestamp = new Date().getTime();
