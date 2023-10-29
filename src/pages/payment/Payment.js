@@ -11,6 +11,7 @@ const Payment = () => {
   const products = useSelector((state) => state.orebiReducer.products);
 
   useEffect(() => {
+    () => dispatch(resetCart());
     // Datos a enviar en la solicitud POST
     const postData = {
       token: "kl0oknftzozoknua",
