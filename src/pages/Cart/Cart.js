@@ -31,7 +31,6 @@ const Cart = () => {
   }, [totalAmt]);
 
   useEffect(() => {
-    console.log(totalAmt);
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
     script.text = `
@@ -51,7 +50,7 @@ const Cart = () => {
           createOrder: function(actions){
             // Se ingresan los datos de la transaccion ej. monto, impuestos, etc
             return actions.prepare({
-              amount: 100,
+              amount: 1000,
               amountWithoutTax: 100,
               currency: "USD",
               clientTransactionId: generateUniqueID(),
