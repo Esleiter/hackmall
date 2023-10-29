@@ -43,7 +43,7 @@ const Cart = () => {
             // Se ingresan los datos de la transaccion ej. monto, impuestos, etc
             return actions.prepare({
               amount: 1000,
-              amountWithoutTax: 100,
+              amountWithoutTax: 1000,
               currency: "USD",
               clientTransactionId: "000000001",
               lang: "es"
