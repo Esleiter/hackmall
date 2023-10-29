@@ -346,22 +346,24 @@ const SignUp = () => {
                   )}
                 </div>
 
-                <Box style={PreferentCustom}>
-                  <Typography
-                    fontSize={15}
-                    fontWeight={"bold"}
-                    color={"#f44336"}
-                  >
-                    Nos gustaria conocer un poco mas de ti
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    sx={buttonStyle}
-                    onClick={handleOpen}
-                  >
-                    Vamos
-                  </Button>
-                </Box>
+                
+                    <Box style={PreferentCustom}>
+                      <Typography
+                        fontSize={15}
+                        fontWeight={"bold"}
+                        color={"#f44336"}
+                      >
+                        Nos gustaria conocer un poco mas de ti
+                      </Typography>
+                      <Button
+                        variant="contained"
+                        sx={buttonStyle}
+                        onClick={handleOpen}
+                      >
+                        Vamos
+                      </Button>
+                    </Box>
+              
 
                 {open && (
                   <Box sx={style}>
