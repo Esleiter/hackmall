@@ -3,8 +3,13 @@ import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import React, { useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
+import { useDispatch, useSelector } from "react-redux";
 
 const Payment = () => {
+
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.orebiReducer.products);
+
   useEffect(() => {
     () => dispatch(resetCart());
     // Datos a enviar en la solicitud POST
@@ -43,6 +48,14 @@ const Payment = () => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        // Recuperar los productos existentes del localStorage
+        const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
+
+        // Combinar los productos recuperados con los productos de "products"
+        const updatedProducts = [...existingProducts, ...products];
+
+        // Almacenar el nuevo conjunto de productos en el localStorage
+        localStorage.setItem("products", JSON.stringify(updatedProducts));
         // Puedes agregar lógica adicional aquí para manejar la respuesta
       })
       .catch(function (error) {

@@ -106,11 +106,11 @@ const Header = () => {
                           transition={{ duration: 0.4 }}
                           className="text-sm flex flex-col gap-1"
                         >
-                          <li className="headerSedenavLi">New Arrivals</li>
-                          <li className="headerSedenavLi">Gudgets</li>
-                          <li className="headerSedenavLi">Accessories</li>
-                          <li className="headerSedenavLi">Electronics</li>
-                          <li className="headerSedenavLi">Others</li>
+                          <li className="headerSedenavLi">Nuevas LLegadas</li>
+                          <li className="headerSedenavLi">Accesorios</li>
+                          <li className="headerSedenavLi">Accesorios</li>
+                          <li className="headerSedenavLi">Electronicos</li>
+                          <li className="headerSedenavLi">Otros</li>
                         </motion.ul>
                       )}
                     </div>
@@ -119,7 +119,7 @@ const Header = () => {
                         onClick={() => setBrand(!brand)}
                         className="flex justify-between text-base cursor-pointer items-center font-titleFont mb-2"
                       >
-                        Shop by Brand
+                        Compra por marca
                         <span className="text-lg">{brand ? "-" : "+"}</span>
                       </h1>
                       {brand && (
@@ -129,11 +129,11 @@ const Header = () => {
                           transition={{ duration: 0.4 }}
                           className="text-sm flex flex-col gap-1"
                         >
-                          <li className="headerSedenavLi">New Arrivals</li>
+                          <li className="headerSedenavLi">Nuevas Llegadas</li>
                           <li className="headerSedenavLi">Gudgets</li>
                           <li className="headerSedenavLi">Accessories</li>
                           <li className="headerSedenavLi">Electronics</li>
-                          <li className="headerSedenavLi">Others</li>
+                          <li className="headerSedenavLi">Otros</li>
                         </motion.ul>
                       )}
                     </div>
