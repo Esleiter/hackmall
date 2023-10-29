@@ -8,11 +8,20 @@ const ProductsGpt = ({ arrayPrompt = [] }) => {
   const [currentItems, setCurrentItems] = useState([]);
 
   useEffect(() => {
-    setCurrentItems(items?.filter((item) => arrayPrompt.includes(item.productName)))
-  }, [arrayPrompt])
-  
+    const itemsSearch = items?.filter((item) =>
+      arrayPrompt?.includes(item.productName)
+    );
+    const keywords = items?.filter((item) =>
+      item?.keywords?.some((v) => arrayPrompt?.includes(v))
+    );
+    console.log(itemsSearch, keywords);
+    const filterSameKeyword = keywords?.filter((item) =>
+      !itemsSearch?.some((v) => v._id === item._id)
+    );
+    setCurrentItems([...itemsSearch ,...filterSameKeyword]);
+  }, [arrayPrompt]);
 
-  console.log('arrrr', arrayPrompt)
+  console.log("arrrr", arrayPrompt);
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Products" />
