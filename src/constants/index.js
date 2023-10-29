@@ -488,5 +488,22 @@ export const purchases_made = [
         cantidad: 1
       }
     ]
-  }
+  },
+  {
+    id_profile: "601",
+    products: [
+      {
+        product_id: 1012,
+        cantidad: 1
+      },
+      {
+        product_id: 1013,
+        cantidad: 1
+      },
+      {
+        product_id: 1014,
+        cantidad: 1
+      }
+    ]
+  },
 ];
