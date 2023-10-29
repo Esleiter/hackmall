@@ -20,6 +20,7 @@ const Cart = () => {
     });
     setTotalAmt(price);
   }, [products]);
+
   useEffect(() => {
     if (totalAmt <= 200) {
       setShippingCharge(30);
@@ -44,10 +45,10 @@ const Cart = () => {
           createOrder: function(actions){
             // Se ingresan los datos de la transaccion ej. monto, impuestos, etc
             return actions.prepare({
-              amount: ${totalAmt},
-              amountWithoutTax: 100,
+              amount: ${totalAmt}, // Use the dynamic totalAmt value
+              amountWithoutTax: 100, // Use the dynamic totalAmt value
               currency: "USD",
-              clientTransactionId: "00000000005",
+              clientTransactionId: "00000000006",
               lang: "es"
             }).then(function(paramlog){
               console.log(paramlog);
