@@ -44,10 +44,10 @@ const Cart = () => {
           createOrder: function(actions){
             // Se ingresan los datos de la transaccion ej. monto, impuestos, etc
             return actions.prepare({
-              amount: 100,
+              amount: ${totalAmt},
               amountWithoutTax: 100,
               currency: "USD",
-              clientTransactionId: "00000000004",
+              clientTransactionId: "00000000005",
               lang: "es"
             }).then(function(paramlog){
               console.log(paramlog);
