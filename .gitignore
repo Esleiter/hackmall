@@ -11,6 +11,8 @@
 # production
 # /build
 
+/src/pages/ChatIA/config.js
+
 # misc
 .DS_Store
 .env.local

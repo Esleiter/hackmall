@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
+import { APIKEY } from "./config";
 
 export const useFetchIa = () => {
   const [isLoading, setIsLoading] = useState(false);
   const fetch = async ({ prompt }) => {
     setIsLoading(true);
     const modelId = "text-davinci-003";
-    const apiKeyUser = "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";
+    const apiKeyUser = APIKEY;
+    console.log(apiKeyUser);
     const formatProducsAvailables = "['Product-1', 'Product-2',...'Product-n']";
     try {
       const dataPrompt = {
