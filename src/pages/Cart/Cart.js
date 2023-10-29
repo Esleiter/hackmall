@@ -72,7 +72,7 @@ const Cart = () => {
       }
     `;
     document.head.appendChild(script);
-  }, []);
+  }, [totalAmt]);
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
