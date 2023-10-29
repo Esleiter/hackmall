@@ -71,7 +71,7 @@ const Cart = () => {
         }).render("#pp-button");
       }
       loadPay();
-      var contenedor = document.querySelector('.pp-button');
+      var contenedor = document.getElementById('pp-button');
   var elementos = contenedor.querySelectorAll('.payphone');
 
   // Ocultar todos los divs hijos
