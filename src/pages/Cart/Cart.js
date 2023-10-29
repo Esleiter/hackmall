@@ -20,7 +20,6 @@ const Cart = () => {
     });
     setTotalAmt(price);
   }, [products]);
-
   useEffect(() => {
     if (totalAmt <= 200) {
       setShippingCharge(30);
@@ -34,6 +33,7 @@ const Cart = () => {
   useEffect(() => {
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
+    let total = (totalAmt + shippingCharge) * 100;
     script.text = `
       window.onload = function() {
         payphone.Button({
@@ -45,10 +45,10 @@ const Cart = () => {
           createOrder: function(actions){
             // Se ingresan los datos de la transaccion ej. monto, impuestos, etc
             return actions.prepare({
-              amount: ${totalAmt}, // Use the dynamic totalAmt value
-              amountWithoutTax: 100, // Use the dynamic totalAmt value
+              amount: ${total},
+              amountWithoutTax: 100,
               currency: "USD",
-              clientTransactionId: "00000000006",
+              clientTransactionId: "00000000009",
               lang: "es"
             }).then(function(paramlog){
               console.log(paramlog);
@@ -66,7 +66,7 @@ const Cart = () => {
       }
     `;
     document.head.appendChild(script);
-  }, [totalAmt]);
+  }, []);
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
