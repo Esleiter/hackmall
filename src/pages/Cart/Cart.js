@@ -35,6 +35,7 @@ const Cart = () => {
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
     script.text = `
+    import uuid from 'uuid';
       window.onload = function() {
         payphone.Button({
           //token obtenido desde la consola de developer
