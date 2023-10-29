@@ -8,19 +8,19 @@ const BannerBottom = () => {
       <div className="max-w-container mx-auto h-20 flex flex-col md:flex-row justify-between items-center">
         <div className="flex items-center gap-2 w-72 shadow-sm hover:shadow-md duration-300">
           <span className="font-bold font-titleFont w-6 text-center">2</span>
-          <p className="text-lightText text-base">Two years warranty</p>
+          <p className="text-lightText text-base">2 años de garantia</p>
         </div>
         <div className="flex md:w-auto items-center gap-2 w-72 shadow-sm hover:shadow-md duration-300">
           <span className="text-xl text-center w-6 ml-1">
             <MdLocalShipping />
           </span>
-          <p className="text-lightText text-base">Free shipping</p>
+          <p className="text-lightText text-base">Envio Gratis</p>
         </div>
         <div className="flex md:w-auto items-center gap-2 w-72 shadow-sm hover:shadow-md duration-300">
           <span className="text-2xl text-center w-6">
             <CgRedo />
           </span>
-          <p className="text-lightText text-base">Return policy in 30 days</p>
+          <p className="text-lightText text-base">Reembolsos en menos de 30 dias</p>
         </div>
       </div>
     </div>
