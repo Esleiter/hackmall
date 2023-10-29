@@ -7,6 +7,38 @@ import { resetCart } from "../../redux/orebiSlice";
 import { emptyCart } from "../../assets/images/index";
 import ItemCard from "./ItemCard";
 
+const handleProceedToCheckout = () => {
+  const parametros = {
+    amount: "100",
+    amountWithoutTax: "100",
+    clientTransactionID: "0000001",
+    responseUrl: "https://hackathon.lat/checkout",
+    cancellationUrl: "https://hackathon.lat/checkout",
+  };
+
+  // Configura los encabezados, incluyendo el token de autorización
+  const headers = new Headers({
+    Authorization:
+      "nVW5WIJ5C2A6S13HNKrK-kfaF7pDdOa-5zxLJUves7NDGShCW92gtUVKspmESY_qwpWvE_8rU4bzGyipTw8brS5TBhNAVdalJSfBN8D6cljBGQt2qDAnTRkZ7ejQHlkHQ2LgpH95IMLbg6eaNz6w_IB97_euHyIpG5wO3yek395pkSPZ8pK5-3WnBRC2Jtcslkhy3Zg3y5za3cnDVi20cpieoIOZnZOPFTrbk1t2fY7Lm1BG5i1YGoOxrCuR3BPX8X2Fai6qrVmdO45yGgiT_zGf14SOnXLu2Z9Z2W3OIuwD_y_6Tuslfx2-j5TAQMz9gPJ2EQ",
+  });
+
+  // Realiza la solicitud POST utilizando fetch
+  fetch("https://pay.payphonetodoesposible.com/api/button/Prepare", {
+    method: "POST",
+    headers,
+    body: JSON.stringify(parametros),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Redirige al usuario a la página de pago
+      window.location.href = data.payWithCard;
+    })
+    .catch((error) => {
+      // Maneja errores de la solicitud
+      console.error("Error en la solicitud POST:", error);
+    });
+};
+
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.orebiReducer.products);
@@ -50,8 +82,7 @@ const Cart = () => {
 
           <button
             onClick={() => dispatch(resetCart())}
-            className="py-2 px-10 bg-red-500 text-white font-semibold uppercase mb-4 hover:bg-red-700 duration-300"
-          >
+            className="py-2 px-10 bg-red-500 text-white font-semibold uppercase mb-4 hover:bg-red-700 duration-300">
             Reset cart
           </button>
 
@@ -92,11 +123,11 @@ const Cart = () => {
                 </p>
               </div>
               <div className="flex justify-end">
-                <Link to="/paymentgateway">
-                  <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
-                    Proceed to Checkout
-                  </button>
-                </Link>
+                <button
+                  onClick={handleProceedToCheckout}
+                  className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
+                  Proceed to Checkout
+                </button>
               </div>
             </div>
           </div>
@@ -106,8 +137,7 @@ const Cart = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.4 }}
-          className="flex flex-col mdl:flex-row justify-center items-center gap-4 pb-20"
-        >
+          className="flex flex-col mdl:flex-row justify-center items-center gap-4 pb-20">
           <div>
             <img
               className="w-80 rounded-lg p-4 mx-auto"

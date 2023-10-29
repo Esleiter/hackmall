@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { logoLight } from "../../assets/images";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   // ============= Initial State Start here =============
@@ -24,6 +25,8 @@ const SignUp = () => {
   const [errCity, setErrCity] = useState("");
   const [errCountry, setErrCountry] = useState("");
   const [errZip, setErrZip] = useState("");
+  const navigate = useNavigate();
+
   // ============= Error Msg End here ===================
   const [successMsg, setSuccessMsg] = useState("");
   // ============= Event Handler Start here =============
@@ -115,9 +118,10 @@ const SignUp = () => {
         country &&
         zip
       ) {
-        setSuccessMsg(
-          `Hello dear ${clientName}, Welcome you to OREBI Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
-        );
+        // setSuccessMsg(
+        //   `Hello dear ${clientName}, Welcome you to OREBI Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
+        // );
+        navigate("/shop");
         setClientName("");
         setEmail("");
         setPhone("");
