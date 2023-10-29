@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Payment = () => {
   const dispatch = useDispatch();
+  window.onload = () => dispatch(resetCart());
   const products = useSelector((state) => state.orebiReducer.products);
 
   useEffect(() => {
