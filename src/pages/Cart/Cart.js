@@ -35,7 +35,7 @@ const Cart = () => {
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
     script.text = `
-      window.onload = function() {
+      document.getElementById("totalPre").addEventListener("load", function() {
         function generateUniqueID() {
           const timestamp = new Date().getTime();
           const randomValue = Math.random() * 1000000; // Puedes ajustar el valor máximo según tus necesidades
@@ -69,7 +69,7 @@ const Cart = () => {
             console.log(model);
           }
         }).render("#pp-button");
-      }
+      });
     `;
     document.head.appendChild(script);
   }, [totalAmt]);
@@ -129,7 +129,9 @@ const Cart = () => {
                 </p>
                 <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
                   Total
-                  <span className="font-bold tracking-wide text-lg font-titleFont">
+                  <span
+                    id="totalPre"
+                    className="font-bold tracking-wide text-lg font-titleFont">
                     ${totalAmt + shippingCharge}
                   </span>
                 </p>
