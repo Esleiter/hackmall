@@ -28,10 +28,10 @@ const Cart = () => {
     } else if (totalAmt > 401) {
       setShippingCharge(5);
     }
-  }, [totalAmt]);
+  }, [totalAmt, shippingCharge]);
 
   useEffect(() => {
-    let totalAmtm = totalAmt * 100;
+    let totalAmtm = (totalAmt + shippingCharge) * 100;
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
     script.text = `
