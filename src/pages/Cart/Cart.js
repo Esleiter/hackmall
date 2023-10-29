@@ -22,20 +22,20 @@ const Cart = () => {
   }, [products]);
   useEffect(() => {
     if (totalAmt <= 200) {
-      setShippingCharge(30);
+      setShippingCharge(2);
     } else if (totalAmt <= 400) {
-      setShippingCharge(25);
+      setShippingCharge(4);
     } else if (totalAmt > 401) {
-      setShippingCharge(20);
+      setShippingCharge(5);
     }
   }, [totalAmt]);
 
   useEffect(() => {
+    console.log(totalAmt);
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
     script.text = `
       window.onload = function() {
-        console.log(${totalAmt})
         function generateUniqueID() {
           const timestamp = new Date().getTime();
           const randomValue = Math.random() * 1000000; // Puedes ajustar el valor máximo según tus necesidades
