@@ -31,7 +31,7 @@ const SignUp = () => {
       id: 1,
     },
     {
-      name: "Amarillo",
+      name: "Verde",
       id: 2,
     },
     {
@@ -39,86 +39,174 @@ const SignUp = () => {
       id: 3,
     },
     {
-      name: "Verde",
+      name: "Amarillo",
       id: 4,
     },
     {
-      name: "Naranja",
+      name: "Cyan",
       id: 5,
+    },
+    {
+      name: "Negro",
+      id: 6,
     },
   ]);
 
   const [vestimentOption, setVestimentOption] = useState([
     {
-      name: "Casual",
+      name: "Formal",
       id: 1,
     },
     {
-      name: "Formal",
+      name: "Informal",
       id: 2,
     },
     {
-      name: "Deportivo",
+      name: "Deportiva",
       id: 3,
     },
     {
-      name: "Elegante",
+      name: "De playa",
       id: 4,
     },
     {
-      name: "Casual",
+      name: "De montaña",
       id: 5,
+    },
+    {
+      name: "De invierno",
+      id: 6,
+    },
+    {
+      name: "De verano",
+      id: 7,
+    },
+    {
+      name: "Casual",
+      id: 8,
     },
   ]);
 
   const [alimentOption, setAlimentOption] = useState([
     {
-      name: "Vegetariano",
+      name: "Comida rapida",
       id: 1,
     },
     {
-      name: "Vegano",
+      name: "Vegetariana",
       id: 2,
     },
     {
-      name: "Carnivoro",
+      name: "Basada en Proteinas",
       id: 3,
     },
     {
-      name: "Omnivoro",
+      name: "Mediterránea",
       id: 4,
     },
     {
-      name: "Frugivoro",
+      name: "Ayuno intermitente",
       id: 5,
+    },
+    {
+      name: "Dieta calorica",
+      id: 6,
+    },
+    {
+      name: "Golosinas",
+      id: 7,
+    },
+    {
+      name: "Proteinico",
+      id: 8,
+    },
+    {
+      name: "Carbohidrato",
+      id: 9,
+    },
+    {
+      name: "Lactosa",
+      id: 10,
+    },
+    {
+      name: "No Lactosa",
+      id: 11,
     },
   ]);
 
   const [marcaOption, setMarcaOption] = useState([
     {
-      name: "Adidas",
+      name: "Nike",
       id: 1,
     },
     {
-      name: "Nike",
+      name: "Adidas",
       id: 2,
     },
     {
-      name: "Puma",
+      name: "Reebok",
       id: 3,
     },
     {
-      name: "Reebok",
+      name: "Puma",
       id: 4,
     },
     {
-      name: "Converse",
+      name: "Sumesa",
       id: 5,
+    },
+    {
+      name: "Nestle",
+      id: 6,
+    },
+    {
+      name: "Unilever",
+      id: 7,
+    },
+    {
+      name: "P&G",
+      id: 8,
+    },
+    {
+      name: "Maggi",
+      id: 9,
+    },
+    {
+      name: "Tesco",
+      id: 10,
+    },
+    {
+      name: "Vans",
+      id: 11,
+    },
+    {
+      name: "H&M",
+      id: 12,
+    },
+    {
+      name: "Fila",
+      id: 13,
+    },
+    {
+      name: "Lacoste",
+      id: 14,
+    },
+    {
+      name: "Boss",
+      id: 15,
+    },
+    {
+      name: "Toni",
+      id: 16,
+    },
+    {
+      name: "Tru",
+      id: 17,
     },
   ]);
 
   const handleOpen = () => {
-    if (clientName != "" && phone != "") {
+    if (clientName == "" && phone == "") {
       setOpen(true);
       setChecked(true);
     } else {
@@ -135,15 +223,6 @@ const SignUp = () => {
   // ============= Error Msg End here ===================
   const [successMsg, setSuccessMsg] = useState("");
   // ============= Event Handler Start here =============
-  const handleName = (e) => {
-    setClientName(e.target.value);
-    setErrClientName("");
-  };
-
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
-    setErrPhone("");
-  };
 
   // ============= Event Handler End here ===============
 
@@ -159,7 +238,7 @@ const SignUp = () => {
       }
 
       // ============== Getting the value ==============
-      if (clientName) {
+      if (clientName == "") {
         setMarca(false);
         setOpen(false);
         navigate("/shop");
@@ -167,6 +246,16 @@ const SignUp = () => {
         setPhone("");
       }
     }
+  };
+
+  const handleNotCheck = (e) => {
+    localStorage.removeItem("selectedOptions");
+    e.preventDefault();
+    setMarca(false);
+    setOpen(false);
+    navigate("/shop");
+    setClientName("");
+    setPhone("");
   };
 
   const style = {
@@ -189,11 +278,10 @@ const SignUp = () => {
   };
 
   const buttonStyle = {
-    marginTop: "1rem",
-    marginBottom: "1rem",
     backgroundColor: "#f44336",
     color: "#fff",
     fontSize: "1.2rem",
+    margin: "0 .5rem 0 0",
     padding: ".5em 2rem",
     borderRadius: "10px",
     fontWeight: "bold",
@@ -305,65 +393,29 @@ const SignUp = () => {
         ) : (
           <form className="w-full lgl:w-[500px] h-screen flex items-center justify-center">
             <div className="px-6 py-4 w-full h-[96%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
-              <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4 text-red-500">
-                Personalización de Preferencias
+              <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl md:text-3xl mb-4 text-red-500 text-center mx-auto">
+                Nos gustaría conocer un poco más de ti
               </h1>
               <div className="flex flex-col gap-3">
-                {/* client name */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Podrias describir uno de tus pasatiempos favoritos?
-                  </p>
-                  <textarea
-                    onChange={handleName}
-                    value={clientName}
-                    className="w-full h-32 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                  />
-                  {errClientName && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errClientName}
-                    </p>
-                  )}
-                </div>
-                {/* Phone Number */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Cual es tu comida favorita?
-                  </p>
-                  <textarea
-                    onChange={handlePhone}
-                    value={phone}
-                    className="w-full h-32 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                  />
-                  {errPhone && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errPhone}
-                    </p>
-                  )}
-                </div>
+                <Box style={PreferentCustom}>
+                  <div className="flex justify-between">
+                    <Button
+                      variant="contained"
+                      sx={buttonStyle}
+                      onClick={handleNotCheck}
+                    >
+                      Despues
+                    </Button>
 
-                
-                    <Box style={PreferentCustom}>
-                      <Typography
-                        fontSize={15}
-                        fontWeight={"bold"}
-                        color={"#f44336"}
-                      >
-                        Nos gustaria conocer un poco mas de ti
-                      </Typography>
-                      <Button
-                        variant="contained"
-                        sx={buttonStyle}
-                        onClick={handleOpen}
-                      >
-                        Vamos
-                      </Button>
-                    </Box>
-              
+                    <Button
+                      variant="contained"
+                      sx={buttonStyle}
+                      onClick={handleOpen}
+                    >
+                      Vamos
+                    </Button>
+                  </div>
+                </Box>
 
                 {open && (
                   <Box sx={style}>

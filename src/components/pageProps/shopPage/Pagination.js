@@ -3,24 +3,43 @@ import ReactPaginate from "react-paginate";
 import Product from "../../home/Products/Product";
 import { paginationItems } from "../../../constants";
 
+const getSelectedOptionsFromLocalStorage = () => {
+  // Obtener los datos del localStorage y parsearlos como objetos JSON
+  const selectedOptions = JSON.parse(localStorage.getItem('selectedOptions')) || [];
+  return selectedOptions;
+};
+
 const items = paginationItems;
 function Items({ currentItems }) {
+  // Obtén las opciones seleccionadas del localStorage
+  const selectedOptions = getSelectedOptionsFromLocalStorage();
+
+  // Filtra los elementos según las opciones seleccionadas o muestra todos los productos si no hay opciones seleccionadas
+  const filteredItems = selectedOptions.length === 0
+    ? currentItems
+    : currentItems.filter((item) => {
+        // Verifica si la propiedad 'tipo_alimentacion' o 'marca' coincide con alguna opción seleccionada
+        return (
+          selectedOptions.some((option) => option === item.tipo_alimentacion) ||
+          selectedOptions.some((option) => option === item.marca)
+        );
+      });
+
   return (
     <>
-      {currentItems &&
-        currentItems.map((item) => (
-          <div key={item._id} className="w-full">
-            <Product
-              _id={item._id}
-              img={item.img}
-              productName={item.productName}
-              price={item.price}
-              color={item.color}
-              badge={item.badge}
-              des={item.des}
-            />
-          </div>
-        ))}
+      {filteredItems.map((item) => (
+        <div key={item._id} className="w-full">
+          <Product
+            _id={item._id}
+            img={item.img}
+            productName={item.productName}
+            price={item.price}
+            color={item.color}
+            badge={item.badge}
+            des={item.des}
+          />
+        </div>
+      ))}
     </>
   );
 }

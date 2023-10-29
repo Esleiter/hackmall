@@ -437,7 +437,7 @@ export const profile_user = [
     celular: "0960939030",
     email: "maurovinicio.echeverria@gmail.com",
     preferencias: {
-      color: ["azul"],
+      color: [],
       tipo_alimentacion: ["vegetariana","Basada en Proteinas"],
       tipo_vestimenta:["Informal"],
       marcas: ["Nike","Adidas","H&M","Fila","Lacoste","Boss"]
@@ -456,7 +456,8 @@ export const preferecnia_user = [
 
 export const purchases_made = [
   {
-    id_profile: "601",
+    id_transaction: 1000,
+    id_profile: 601,
     products: [
       {
         product_id: 1012,
@@ -473,7 +474,8 @@ export const purchases_made = [
     ]
   },
   {
-    id_profile: "601",
+    id_transaction: 1001,
+    id_profile: 601,
     products: [
       {
         product_id: 1015,
@@ -490,7 +492,8 @@ export const purchases_made = [
     ]
   },
   {
-    id_profile: "601",
+    id_transaction: 1002,
+    id_profile: 602,
     products: [
       {
         product_id: 1012,

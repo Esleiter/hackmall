@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Card, CardContent, Grid, Chip } from "@mui/material";
-import DoneIcon from '@mui/icons-material/Done';
+import DoneIcon from "@mui/icons-material/Done";
 
-const PreferenceForm = ({preferents}) => {
-  
+const PreferenceForm = ({ preferents }) => {
   const [option, setOption] = useState([]);
 
   useEffect(() => {
@@ -11,10 +10,22 @@ const PreferenceForm = ({preferents}) => {
   }, []);
 
   const handleClick = (optionId) => {
+    const itemSelected = option.find((preferent) => preferent.id === optionId);
+
+    // Obtener los datos existentes del localStorage
+    const existingOptions =
+      JSON.parse(localStorage.getItem("selectedOptions")) || [];
+
+    // Agregar solo el "name" del nuevo elemento seleccionado al arreglo en memoria
+    existingOptions.push(itemSelected.name);
+
+    // Guardar el arreglo actualizado en el localStorage
+    localStorage.setItem("selectedOptions", JSON.stringify(existingOptions));
+
     const newOptions = option.filter((preferent) => preferent.id != optionId);
     setOption(newOptions);
-  }
-  
+  };
+
   const handleDelete = () => {};
 
   const cardStyles = {
@@ -24,15 +35,15 @@ const PreferenceForm = ({preferents}) => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "column"
+    flexDirection: "column",
   };
 
   const chipStyles = {
-    fontSize: '16px', // Tamaño de fuente
-    padding: '18px', // Relleno interno
-    backgroundColor: '#fff',
-    border: '1px solid #f44336',
-    color: '#f44336'
+    fontSize: "16px", // Tamaño de fuente
+    padding: "18px", // Relleno interno
+    backgroundColor: "#fff",
+    border: "1px solid #f44336",
+    color: "#f44336",
   };
 
   return (
