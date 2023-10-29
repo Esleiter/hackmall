@@ -6,7 +6,7 @@ export const useFetchIa = () => {
   const fetch = async ({ prompt }) => {
     setIsLoading(true);
     const modelId = "text-davinci-003";
-    const apiKeyUser = "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";
+    const apiKeyUser = `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`;
     const formatProducsAvailables = "['Product-1', 'Product-2',...'Product-n']";
     try {
       const dataPrompt = {
