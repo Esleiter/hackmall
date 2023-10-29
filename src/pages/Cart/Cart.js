@@ -31,6 +31,8 @@ const Cart = () => {
   }, [totalAmt]);
 
   useEffect(() => {
+    const uniqueId = Math.random().toString(36).substr(2, 9); // Puedes usar otra lógica para generar un identificador único
+    setClientTransactionId(uniqueId);
     // Agrega el script de Payphone directamente
     const script = document.createElement("script");
     script.text = `
@@ -47,7 +49,7 @@ const Cart = () => {
               amount: 100,
               amountWithoutTax: 100,
               currency: "USD",
-              clientTransactionId: "00003",
+              clientTransactionId: "${uniqueId}",
               lang: "es"
             }).then(function(paramlog){
               console.log(paramlog);
