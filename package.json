@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "echo 'export const APIKEY = \"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\";' > src/pages/ChatIA/config.js && react-scripts build",
+    "build": "echo 'export const APIKEY = \"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\";' > src/pages/ChatIA/config.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
