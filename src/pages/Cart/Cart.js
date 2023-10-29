@@ -37,7 +37,7 @@ const Cart = () => {
       window.onload = function() {
         payphone.Button({
           //token obtenido desde la consola de developer
-          token: "TU-TOKEN-DE-AUTENTICACION",
+          token: "nVW5WIJ5C2A6S13HNKrK-kfaF7pDdOa-5zxLJUves7NDGShCW92gtUVKspmESY_qwpWvE_8rU4bzGyipTw8brS5TBhNAVdalJSfBN8D6cljBGQt2qDAnTRkZ7ejQHlkHQ2LgpH95IMLbg6eaNz6w_IB97_euHyIpG5wO3yek395pkSPZ8pK5-3WnBRC2Jtcslkhy3Zg3y5za3cnDVi20cpieoIOZnZOPFTrbk1t2fY7Lm1BG5i1YGoOxrCuR3BPX8X2Fai6qrVmdO45yGgiT_zGf14SOnXLu2Z9Z2W3OIuwD_y_6Tuslfx2-j5TAQMz9gPJ2EQ",
           //PARÁMETROS DE CONFIGURACIÓN
           btnHorizontal: true,
           btnCard: true,
@@ -47,7 +47,7 @@ const Cart = () => {
               amount: 100,
               amountWithoutTax: 100,
               currency: "USD",
-              clientTransactionId: "identificador-único",
+              clientTransactionId: "00001",
               lang: "es"
             }).then(function(paramlog){
               console.log(paramlog);
