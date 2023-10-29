@@ -29,7 +29,13 @@ const Shop = () => {
     );
 
     if (topProductsFromLocalStorage) {
-      setTopProduct(topProductsFromLocalStorage);
+      const uniqueProducts = Array.from(
+        new Set(topProductsFromLocalStorage.map((item) => item._id))
+      ).map((_id) =>
+        topProductsFromLocalStorage.find((item) => item._id === _id)
+      );
+
+      setTopProduct(uniqueProducts);
     } else {
       const top = paginationItems.find((item) => item.descuento > 0);
       localStorage.setItem("topProduct", JSON.stringify([top]));
