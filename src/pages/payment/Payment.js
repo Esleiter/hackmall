@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
 import { useDispatch, useSelector } from "react-redux";
-import { resetCart } from "../../redux/orebiSlice";
 
 const Payment = () => {
 
@@ -57,7 +56,6 @@ const Payment = () => {
         // Almacenar el nuevo conjunto de productos en el localStorage
         localStorage.setItem("topProduct", JSON.stringify(updatedProducts));
         // Puedes agregar lógica adicional aquí para manejar la respuesta
-        dispatch(resetCart);
       })
       .catch(function (error) {
         console.log(error);
