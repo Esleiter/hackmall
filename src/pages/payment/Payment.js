@@ -6,6 +6,7 @@ import qs from "qs";
 
 const Payment = () => {
   useEffect(() => {
+    () => dispatch(resetCart());
     // Datos a enviar en la solicitud POST
     const postData = {
       token: "kl0oknftzozoknua",
