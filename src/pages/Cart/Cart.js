@@ -50,7 +50,7 @@ const Cart = () => {
           createOrder: function(actions){
             // Se ingresan los datos de la transaccion ej. monto, impuestos, etc
             return actions.prepare({
-              amount: 1000,
+              amount: 985,
               amountWithoutTax: 100,
               currency: "USD",
               clientTransactionId: generateUniqueID(),
