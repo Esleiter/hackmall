@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import qs from "qs";
 import { useDispatch, useSelector } from "react-redux";
+import { resetCart } from "../../redux/orebiSlice";
 
 const Payment = () => {
   const dispatch = useDispatch();
