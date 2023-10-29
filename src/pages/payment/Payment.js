@@ -12,7 +12,7 @@ const Payment = () => {
   useEffect(() => {
     // Datos a enviar en la solicitud POST
     const postData = {
-      token: "kl0oknftzozoknua",
+      token: "s93zfru1yl2mgl4p",
       to: "+584144582250",
       body: `¡Hola! 😃
 
@@ -35,7 +35,7 @@ const Payment = () => {
     // Configuración de la solicitud
     const config = {
       method: "post",
-      url: "https://api.ultramsg.com/instance12739/messages/chat",
+      url: "https://api.ultramsg.com/instance66870/messages/chat",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
@@ -71,9 +71,7 @@ const Payment = () => {
           Siga disfrutando de la experiencia de comprar con el mall del futuro.
         </p>
         <Link to="/">
-          <button
-            onLoad={() => dispatch(resetCart())}
-            className="w-52 h-10 bg-primeColor text-white text-lg mt-4 hover:bg-black duration-300">
+          <button className="w-52 h-10 bg-primeColor text-white text-lg mt-4 hover:bg-black duration-300">
             Explorar más
           </button>
         </Link>
