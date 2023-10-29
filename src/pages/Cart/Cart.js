@@ -6,41 +6,6 @@ import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
 import { emptyCart } from "../../assets/images/index";
 import ItemCard from "./ItemCard";
-import axios from "axios";
-
-const handleProceedToCheckout = () => {
-  const parametros = {
-    amount: "100",
-    amountWithoutTax: "100",
-    clientTransactionID: "IdentificadorUnico",
-    responseUrl: "https://hackathon.lat/checkout",
-    cancellationUrl: "https://hackathon.lat/checkout",
-  };
-
-  // Configura los encabezados, incluyendo el token de autorización
-  const config = {
-    headers: {
-      Authorization:
-        "nVW5WIJ5C2A6S13HNKrK-kfaF7pDdOa-5zxLJUves7NDGShCW92gtUVKspmESY_qwpWvE_8rU4bzGyipTw8brS5TBhNAVdalJSfBN8D6cljBGQt2qDAnTRkZ7ejQHlkHQ2LgpH95IMLbg6eaNz6w_IB97_euHyIpG5wO3yek395pkSPZ8pK5-3WnBRC2Jtcslkhy3Zg3y5za3cnDVi20cpieoIOZnZOPFTrbk1t2fY7Lm1BG5i1YGoOxrCuR3BPX8X2Fai6qrVmdO45yGgiT_zGf14SOnXLu2Z9Z2W3OIuwD_y_6Tuslfx2-j5TAQMz9gPJ2EQ",
-    },
-  };
-
-  // Realiza la solicitud POST utilizando Axios
-  axios
-    .post(
-      "https://pay.payphonetodoesposible.com/api/button/Prepare",
-      parametros,
-      config
-    )
-    .then((response) => {
-      // Redirige al usuario a la página de pago
-      window.location.href = response.data.payWithCard;
-    })
-    .catch((error) => {
-      // Maneja errores de la solicitud
-      console.error("Error en la solicitud POST:", error);
-    });
-};
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -64,6 +29,43 @@ const Cart = () => {
       setShippingCharge(20);
     }
   }, [totalAmt]);
+
+  useEffect(() => {
+    // Agrega el script de Payphone directamente
+    const script = document.createElement("script");
+    script.text = `
+      window.onload = function() {
+        payphone.Button({
+          //token obtenido desde la consola de developer
+          token: "nVW5WIJ5C2A6S13HNKrK-kfaF7pDdOa-5zxLJUves7NDGShCW92gtUVKspmESY_qwpWvE_8rU4bzGyipTw8brS5TBhNAVdalJSfBN8D6cljBGQt2qDAnTRkZ7ejQHlkHQ2LgpH95IMLbg6eaNz6w_IB97_euHyIpG5wO3yek395pkSPZ8pK5-3WnBRC2Jtcslkhy3Zg3y5za3cnDVi20cpieoIOZnZOPFTrbk1t2fY7Lm1BG5i1YGoOxrCuR3BPX8X2Fai6qrVmdO45yGgiT_zGf14SOnXLu2Z9Z2W3OIuwD_y_6Tuslfx2-j5TAQMz9gPJ2EQ",
+          //PARÁMETROS DE CONFIGURACIÓN
+          btnHorizontal: true,
+          btnCard: true,
+          createOrder: function(actions){
+            // Se ingresan los datos de la transaccion ej. monto, impuestos, etc
+            return actions.prepare({
+              amount: 100,
+              amountWithoutTax: 100,
+              currency: "USD",
+              clientTransactionId: "00002",
+              lang: "es"
+            }).then(function(paramlog){
+              console.log(paramlog);
+              return paramlog;
+            }).catch(function(paramlog2){
+              console.log(paramlog2);
+              return paramlog2;
+            });
+          },
+          onComplete: function(model, actions){
+            console.log("Modelo:");
+            console.log(model);
+          }
+        }).render("#pp-button");
+      }
+    `;
+    document.head.appendChild(script);
+  }, []);
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
@@ -126,11 +128,7 @@ const Cart = () => {
                 </p>
               </div>
               <div className="flex justify-end">
-                <button
-                  onClick={handleProceedToCheckout}
-                  className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
-                  Proceed to Checkout
-                </button>
+                <div id="pp-button"></div>
               </div>
             </div>
           </div>
