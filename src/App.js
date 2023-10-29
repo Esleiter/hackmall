@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
   Route,
   ScrollRestoration,
+  Navigate
 } from "react-router-dom";
 import Footer from "./components/home/Footer/Footer";
 import FooterBottom from "./components/home/Footer/FooterBottom";
@@ -41,7 +42,7 @@ const router = createBrowserRouter(
     <Route>
       <Route path="/" element={<Layout />}>
         {/* ==================== Header Navlink Start here =================== */}
-        <Route index element={<Home />}></Route>
+        <Route index element={<Navigate to={"/signin"} />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
