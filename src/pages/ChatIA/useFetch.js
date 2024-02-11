@@ -15,7 +15,7 @@ export const useFetchIa = () => {
         temperature: 0.1,
       };
       const { data } = await axios.post(
-        `https://api.openai.com/v1/engines/${modelId}/completions`,
+        `https://apiopenai.esleiter.com/v1/engines/${modelId}/completions`,
         { ...dataPrompt },
         {
           headers: {
