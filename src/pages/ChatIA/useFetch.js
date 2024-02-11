@@ -5,7 +5,7 @@ export const useFetchIa = () => {
   const [isLoading, setIsLoading] = useState(false);
   const fetch = async ({ prompt }) => {
     setIsLoading(true);
-    const modelId = "text-davinci-003";
+    const modelId = "gpt-3.5-turbo-instruct";
     const apiKeyUser = `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`;
     const formatProducsAvailables = "['Product-1', 'Product-2',...'Product-n']";
     try {
